@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Sheppard - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --primary: #003087;
+            --secondary: #461D7C;
+            --accent: #F9B500;
+            --light: #f4f6f9;
+            --dark: #263238;
+            --space: #0A1128;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--space), var(--primary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px);
+            background-size: 30px 30px;
+            z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 4rem 0;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--space);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .rocket-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .about {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .about-container {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+            /*align-items: flex-start;  <-- OPTIONAL: Align items to the top */
+        }
+
+        .about-image {
+             /* Remove the flex and min-width properties */
+            display: none; /* Hide the image container completely */
+
+        }
+
+        .about-content {
+            flex: 1;  /* Occupy all available space */
+            min-width: 300px;
+            max-width: 700px;  /*  Control maximum width of the text */
+            margin: 0 auto;     /* Center the content horizontally */
+        }
+
+        .about-content h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .education {
+            padding: 5rem 0;
+            background-color: var(--light);
+        }
+
+        .education-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .education-timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 45%;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 55%;
+        }
+
+        .timeline-content {
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            top: 20px;
+            transform: rotate(45deg);
+            box-shadow: 5px -5px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -10px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            top: 20px;
+            z-index: 1;
+            border: 4px solid var(--primary);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -16.5px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -16.5px;
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .interests {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .interests-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .interest-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .interest-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .interest-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .interest-card h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .skills {
+            padding: 5rem 0;
+            background-color: var(--light);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .skill-category h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .skill-list {
+            list-style-type: none;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        .goals {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .goals-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .goal-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .goal-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .goal-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .goal-content {
+            padding: 1.5rem;
+        }
+
+        .goal-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .goal-content ul li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .goal-content ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+       /* NEW CONTACT CSS (from provided code) */
+        .contact-section {
+          padding: 60px 20px;
+          background-color: #f9f9f9;
+        }
+
+        .contact-section h2 {
+          text-align: center;
+          margin-bottom: 40px;
+          color: #333;
+        }
+
+        .contact-container {
+          display: flex;
+          flex-wrap: wrap;
+          max-width: 1200px;
+          margin: 0 auto;
+          gap: 40px;
+        }
+
+        .contact-info {
+          flex: 1;
+          min-width: 300px;
+        }
+
+        .contact-cards {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .contact-card {
+          background: white;
+          border-radius: 8px;
+          padding: 20px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          text-align: center;
+        }
+
+        .contact-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-card i {
+          font-size: 2rem;
+          color: #007bff;
+          margin-bottom: 15px;
+        }
+
+        .contact-card h3 {
+          margin: 10px 0;
+          font-size: 1.2rem;
+          color: #333;
+        }
+
+        .contact-card p {
+          color: #666;
+          margin: 5px 0;
+        }
+
+        .contact-card a {
+          color: #666;
+          text-decoration: none;
+          transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+          color: #007bff;
+        }
+
+        .contact-form {
+          flex: 1.5;
+          min-width: 300px;
+        }
+
+        .form-group {
+          margin-bottom: 15px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+          width: 100%;
+          padding: 12px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          font-size: 1rem;
+          font-family: inherit;
+        }
+
+        .form-group textarea {
+          min-height: 150px;
+          resize: vertical;
+        }
+
+         .submit-btn {  /* Changed from .btn */
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--space);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .submit-btn:hover { /* Changed from .btn */
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+          .contact-container {
+            flex-direction: column;
+          }
+
+          .contact-cards {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+
+          .contact-card {
+            flex: 1;
+            min-width: 200px;
+            max-width: 250px;
+          }
+        }
+
+        @media (max-width: 576px) {
+          .contact-cards {
+            flex-direction: column;
+            align-items: center;
+          }
+
+          .contact-card {
+            width: 100%;
+            max-width: 100%;
+          }
+        }
+        /* END NEW CONTACT CSS */
+
+
+        footer {
+            background-color: var(--space);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-content {
+                padding-right: 0;
+            }
+
+            .hero-image {
+                margin-top: 2rem;
+            }
+
+            .education-timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -10px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 18.5px;
+            }
+
+             /* Add this to make about section responsive */
+            .about-content {
+                max-width: 100%; /* Full width on smaller screens */
+            }
+
+
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <div class="stars"></div>
+        <div class="header-content">
+            <div class="container">
+                <nav>
+                    <div class="logo">
+                        <span>🚀</span> JOB SHEPPARD
+                    </div>
+                    <div class="nav-links">
+                        <a href="#about">About</a>
+                        <a href="#education">Education</a>
+                        <a href="#interests">Interests</a>
+                        <a href="#skills">Skills</a>
+                        <a href="#goals">Goals</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </nav>
+                <div class="hero">
+                    <div class="hero-content">
+                        <h1>Job Sheppard</h1>
+                        <p>Mechanical Engineering Student at Louisiana State University with a focus on aerospace applications</p>
+                        <a href="#contact" class="btn">Connect With Me</a>
+                    </div>
+                    <div class="hero-image">
+                        <div class="rocket-container">
+                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M100,20 C130,20 150,50 150,100 L150,160 L120,140 L100,180 L80,140 L50,160 L50,100 C50,50 70,20 100,20 Z" fill="#f4f6f9" stroke="#263238" stroke-width="3"/>
+                                <circle cx="100" cy="80" r="15" fill="#003087"/>
+                                <path d="M50,120 L20,140 L50,160 Z" fill="#461D7C"/>
+                                <path d="M150,120 L180,140 L150,160 Z" fill="#461D7C"/>
+                                <path d="M85,180 Q100,210 115,180 Z" fill="#F9B500"/>
+                                <path d="M90,180 Q100,220 110,180 Z" fill="#F08700"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-container">
+                <div class="about-image">
+                </div>
+                <div class="about-content">
+                    <h3>My Path to Aerospace Engineering</h3>
+                    <p>I'm a student with a strong interest in aerospace engineering who wants to contribute to flight and space exploration advancements. Having recently earned an Associate of Biological Sciences through an Early College program, I'm starting my Mechanical Engineering degree at Louisiana State University in Fall 2025.</p>
+                    <p>Though I'm just beginning my formal engineering education, my interest in rockets, aircraft, and space technology goes back to childhood. I'm ready to build on my science background and develop the technical skills needed for aerospace work.</p>
+                    <p>I believe that bringing fresh perspectives to engineering problems can lead to innovative aerospace solutions as I progress through my education and career.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Education Journey</h2>
+            <div class="education-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">May 2025</div>
+                        <h3>Associate of Biological Sciences</h3>
+                        <p>Early College Program</p>
+                        <p>Completed foundational coursework in biology and chemistry, developing strong scientific reasoning and analytical skills that will support my engineering studies.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Fall 2025 - Future</div>
+                        <h3>Bachelor of Mechanical Engineering</h3>
+                        <p>Louisiana State University (LSU)</p>
+                        <p>Starting my mechanical engineering program with a focus on systems relevant to aerospace applications.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Long-term Goal</div>
+                        <h3>Graduate Studies in Aerospace</h3>
+                        <p>Planning to pursue advanced education in aerospace engineering to specialize in aircraft or spacecraft design after gaining fundamental engineering experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="interests" class="interests">
+        <div class="container">
+            <h2 class="section-title">Areas of Interest</h2>
+            <div class="interests-container">
+                <div class="interest-card">
+                    <div class="interest-icon">🚀</div>
+                    <h3>Aircraft Design</h3>
+                    <p>Interested in aerodynamics and the structural challenges of building efficient and innovative aircraft.</p>
+                </div>
+                <div class="interest-card">
+                    <div class="interest-icon">🛰️</div>
+                    <h3>Spacecraft Systems</h3>
+                    <p>Focused on the engineering solutions for spacecraft operation in extreme environments.</p>
+                </div>
+                <div class="interest-card">
+                    <div class="interest-icon">⚙️</div>
+                    <h3>Propulsion Technology</h3>
+                    <p>Studying rocket engines, jet propulsion, and more sustainable aerospace power systems.</p>
+                </div>
+                <div class="interest-card">
+                    <div class="interest-icon">🧪</div>
+                    <h3>Aerospace Materials</h3>
+                    <p>Exploring advanced materials essential to aerospace applications, from composites to specialized alloys.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Current Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Programming</h3>
+                    <ul class="skill-list">
+                        <li>Python - Beginner level understanding</li>
+                        <li>Problem-solving approach to coding challenges</li>
+                        <li>Interest in computational applications for engineering</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Science Background</h3>
+                    <ul class="skill-list">
+                        <li>Foundational knowledge in biology and chemistry</li>
+                        <li>Laboratory experience and scientific method</li>
+                        <li>Data analysis and interpretation</li>
+                        <li>Technical report writing</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Astronomy</h3>
+                    <ul class="skill-list">
+                        <li>Practical experience with 8-inch Dobsonian telescope</li>
+                        <li>Knowledge of celestial objects and night sky navigation</li>
+                        <li>Understanding of astronomical concepts and phenomena</li>
+                        <li>Observational astronomy skills</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Personal Strengths</h3>
+                    <ul class="skill-list">
+                        <li>Strong analytical thinking</li>
+                        <li>Dedicated to continuous learning</li>
+                        <li>Adaptability to new challenges</li>
+                        <li>Attention to detail</li>
+                        <li>Creative problem-solving</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="goals" class="goals">
+        <div class="container">
+            <h2 class="section-title">Engineering Goals</h2>
+            <div class="goals-container">
+                <div class="goal-card">
+                    <div class="goal-header">
+                        <h3>Short-term Goals (1-2 Years)</h3>
+                    </div>
+                    <div class="goal-content">
+                        <ul>
+                            <li>Complete fundamental engineering courses with strong grades</li>
+                            <li>Participate in aerospace or engineering student clubs</li>
+                            <li>Learn CAD software and simulation tools</li>
+                            <li>Build a small model aircraft or rocket project</li>
+                            <li>Strengthen my math and physics foundation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="goal-card">
+                    <div class="goal-header">
+                        <h3>Mid-term Goals (2-4 Years)</h3>
+                    </div>
+                    <div class="goal-content">
+                        <ul>
+                            <li>Obtain an internship with an aerospace company</li>
+                            <li>Join an engineering research project</li>
+                            <li>Specialize in aerospace-related coursework</li>
+                            <li>Build professional connections in the industry</li>
+                            <li>Design and complete a substantial aerospace project</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="goal-card">
+                    <div class="goal-header">
+                        <h3>Long-term Goals (5+ Years)</h3>
+                    </div>
+                    <div class="goal-content">
+                        <ul>
+                            <li>Graduate with a competitive GPA in Mechanical Engineering</li>
+                            <li>Pursue a graduate degree in Aerospace Engineering</li>
+                            <li>Work at an aerospace company or research facility</li>
+                            <li>Help develop new aerospace technologies</li>
+                            <li>Lead engineering teams on aerospace projects</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-container">
+          <div class="contact-info">
+              <div class="contact-cards">
+                <div class="contact-card">
+                  <i class="fas fa-envelope"></i>
+                  <h3>Email</h3>
+                  <p><a href="mailto:jobsheppard27@gmail.com">jobsheppard27@gmail.com</a></p>
+                </div>
+                <div class="contact-card">
+                  <i class="fas fa-university"></i>
+                  <h3>University</h3>
+                  <p>Louisiana State University<br>Baton Rouge, LA</p>
+                </div>
+              </div>
+          </div>
+          <div class="contact-form">
+            <form id="contact-form">
+              <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Name" required>
+              </div>
+              <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Email" required>
+              </div>
+              <div class="form-group">
+                <input type="text" id="subject" name="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group">
+                <textarea id="message" name="message" placeholder="Message" required></textarea>
+              </div>
+              <button type="submit" class="submit-btn">Send Message</button>
+              <div id="status-message" style="margin-top: 15px; display: none;"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© <span id="currentYear"></span> | Job Sheppard - Aerospace Portfolio</p>
+            <p>Ad Astra Per Aspera</p>
+        </div>
+    </footer>
+    <script>
+        document.getElementById("currentYear").textContent = new Date().getFullYear();
+    </script>
+    <script>
+        var form = document.getElementById("contact-form");
+
+        async function handleSubmit(event) {
+          event.preventDefault();
+          const statusMessage = document.getElementById('status-message');
+          statusMessage.style.display = 'block';
+          statusMessage.textContent = 'Sending...';
+          statusMessage.style.color = '#003087';
+          var data = new FormData(event.target);
+          fetch("https://formspree.io/f/xyzkqdyn", { 
+            method: "POST", 
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+          }).then(response => {
+            if (response.ok) {
+                statusMessage.textContent = 'Message sent successfully!';
+                statusMessage.style.color = 'green';
+                form.reset()
+                setTimeout(() => { statusMessage.style.display = 'none'; }, 3000);
+            } else {
+              response.json().then(data => {
+                if (Object.hasOwn(data, 'errors')) {
+                  statusMessage.textContent = data["errors"].map(error => error["message"]).join(", ")
+                  statusMessage.style.color = 'red';
+                } else {
+                    statusMessage.textContent = 'Failed to send message';
+                    statusMessage.style.color = 'red';
+                }
+              })
+            }
+          }).catch(error => {
+            statusMessage.textContent = 'Failed to send message';
+            statusMessage.style.color = 'red';
+          });
+        }
+        form.addEventListener("submit", handleSubmit)
+    </script>
+</body>
+</html>
