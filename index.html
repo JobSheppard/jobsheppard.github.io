@@ -227,7 +227,9 @@
       padding: clamp(18px, 3vw, 28px);
     }
     .about-lead { font-size: 1.1rem; color: var(--muted); margin-bottom: 14px; }
-    .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 6px; }
+    .badge-row {
+      display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 6px;
+    }
     .badge {
       display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.88rem;
       padding: 8px 12px; border-radius: 999px; background: color-mix(in oklab, var(--accent), transparent 85%);
@@ -382,7 +384,21 @@
     /* Responsive */
     @media (max-width: 980px) {
       .hero-inner { grid-template-columns: 1fr; text-align: center; }
-      .cta-row { justify-content: center; }
+
+      /* Center CTAs and badges on small screens */
+      .hero .cta-row { justify-content: center; }
+      .hero .badge-row {
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero .badge-row,
+      .hero .cta-row {
+        width: 100%;
+        text-align: center;
+      }
+
       .contact-wrap { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .nav-links { display: none; }
