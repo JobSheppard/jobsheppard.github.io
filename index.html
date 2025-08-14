@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- CHANGE: tighter title for search and sharing -->
   <title>Job Sheppard — Mechanical Engineering @ LSU (Aerospace Focus)</title>
 
   <meta name="description" content="Job Sheppard — Mechanical Engineering freshman at LSU with an aerospace focus: systems, propulsion, and flight. RPCC associate graduate." />
@@ -12,8 +13,10 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0E1220">
   <meta name="format-detection" content="telephone=no">
 
+  <!-- CHANGE: preconnect to form endpoint -->
   <link rel="preconnect" href="https://formspree.io" crossorigin>
 
+  <!-- Open Graph / Twitter (expanded) -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Job Sheppard — Mechanical Engineering @ LSU (Aerospace Focus)">
   <meta property="og:description" content="First-year ME at LSU with an aerospace focus: systems, propulsion, and flight.">
@@ -25,6 +28,8 @@
   <meta name="twitter:description" content="Aerospace-focused ME student: systems, propulsion, flight.">
   <meta name="twitter:image" content="https://jobsheppard.github.io/og-image.jpg">
 
+  <!-- Structured data -->
+  <!-- CHANGE: add @id and knowsAbout for better entity clarity -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -44,6 +49,7 @@
 
   <style>
     :root {
+      /* LSU palette-inspired */
       --ink: #0E1220;
       --ink-2: #2C2F3A;
       --muted: #676C7A;
@@ -87,6 +93,7 @@
     a { color: inherit; text-decoration: none; }
     .container { width: min(1100px, 92%); margin: 0 auto; }
 
+    /* Skip link for accessibility */
     .skip-link {
       position: absolute;
       left: -999px;
@@ -168,6 +175,7 @@
     }
     .cta:hover { transform: translateY(-1px); }
 
+    /* Mobile menu */
     .hamburger {
       display: none;
       background: transparent;
@@ -377,6 +385,7 @@
       </div>
     </div>
 
+    <!-- Mobile menu -->
     <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
       <div class="mobile-sheet" role="dialog" aria-modal="true" aria-labelledby="menuTitle">
         <div class="nav-wrap" style="height:auto; justify-content: space-between;">
@@ -394,6 +403,7 @@
   </header>
 
   <main id="content" tabindex="-1">
+    <!-- HERO -->
     <section class="container hero" aria-label="Introduction">
       <div class="hero-card">
         <span class="pill">Mechanical Engineering @ LSU</span>
@@ -412,6 +422,7 @@
       </div>
     </section>
 
+    <!-- ABOUT -->
     <section id="about" class="container section">
       <h2>About</h2>
       <div class="grid-2">
@@ -433,6 +444,7 @@
       </div>
     </section>
 
+    <!-- EXPERIENCE -->
     <section id="experience" class="container section">
       <h2>Experience</h2>
       <div class="grid-2">
@@ -452,6 +464,7 @@
       </div>
     </section>
 
+    <!-- PROJECTS -->
     <section id="projects" class="container section">
       <h2>Projects</h2>
       <div class="grid-3">
@@ -470,6 +483,7 @@
       </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact" class="container section">
       <h2>Contact</h2>
       <div class="contact">
@@ -507,6 +521,7 @@
     </section>
   </main>
 
+  <!-- Footer -->
   <footer>
     <div class="container">
       <p>© <span id="currentYear"></span> | Job Sheppard — Portfolio</p>
@@ -514,6 +529,7 @@
     </div>
   </footer>
 
+  <!-- Sticky CTA for mobile -->
   <div class="sticky-cta" aria-hidden="true">
     <a href="#contact">Contact me →</a>
   </div>
@@ -521,10 +537,12 @@
   <button class="to-top" id="toTop" aria-label="Scroll to top" title="Back to top">↑</button>
 
   <script>
+    // Year
     document.getElementById("currentYear").textContent = new Date().getFullYear();
 
     const navWrap = document.querySelector('.nav-wrap');
 
+    // ===== Mobile menu (accessibility improved: focus trap + scroll lock) =====
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
 
@@ -536,7 +554,7 @@
     function openMenu() {
       lastFocused = document.activeElement;
       mobileMenu.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden'; 
+      document.body.style.overflow = 'hidden'; // scroll lock
       const first = getMenuFocusables()[0];
       first && first.focus();
       hamburger.setAttribute('aria-expanded', 'true');
@@ -565,6 +583,7 @@
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     });
 
+    // ===== Scroll to top button =====
     const toTop = document.getElementById('toTop');
     const onScroll = () => {
       toTop.style.display = window.scrollY > 600 ? 'block' : 'none';
@@ -572,6 +591,7 @@
     window.addEventListener('scroll', onScroll);
     toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
+    // ===== Hero animation (pause when off-screen via IntersectionObserver) =====
     const hero = document.getElementById('heroCanvas');
     if (hero) {
       const ctx = hero.getContext('2d');
@@ -617,6 +637,7 @@
       heroObs.observe(hero);
     }
 
+    // ===== Contact form (progress + SR announcements) =====
     const form = document.getElementById('contactForm');
     const statusEl = document.getElementById('status-message');
     const submitBtn = document.getElementById('submitBtn');
@@ -646,6 +667,7 @@
       }
     });
 
+    // ===== Copy email helper =====
     const copyBtn = document.getElementById('copyEmail');
     const feedback = document.getElementById('copyFeedback');
     copyBtn.addEventListener('click', async () => {
@@ -659,10 +681,12 @@
       }
     });
 
+    // ===== Intersection Observer for hero animation pause =====
     const hero2 = document.getElementById('heroCanvas');
     if ('IntersectionObserver' in window && hero2) {
       const heroObs = new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) return;
+        // If not visible, the above observer already stops the loop
       });
       heroObs.observe(hero);
     }
