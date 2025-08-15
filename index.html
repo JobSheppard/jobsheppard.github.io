@@ -434,7 +434,23 @@
       position: absolute !important; height: 1px; width: 1px; overflow: hidden;
       clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; border: 0; padding: 0; margin: -1px;
     }
-  </style>
+  
+/* === Light-mode visibility overrides (text color only; no background changes) === */
+:root:not(.theme-dark) .copy-btn {
+  color: var(--primary);
+  transition: color .2s ease, transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+}
+:root:not(.theme-dark) .copy-btn:hover {
+  color: color-mix(in oklab, var(--primary), black 14%);
+}
+:root:not(.theme-dark) .badge.purple {
+  color: var(--primary);
+  transition: color .2s ease;
+}
+
+    
+.no-color-change-freshman{color:#FFFFFF !important;transition:none !important;}
+</style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -482,7 +498,7 @@
           Mechanical Engineering Freshman at Louisiana State University — focused on aerospace systems, propulsion, and flight.
         </p>
         <div class="badge-row" aria-hidden="true">
-          <span class="badge purple">🎓 LSU Freshman</span>
+          <span class="badge purple">🎓 <span class="no-color-change-freshman">LSU Freshman</span></span>
           <span class="badge">🏅 RPCC Associate Graduate (2025)</span>
         </div>
         <div class="cta-row" style="margin-top:14px;">
